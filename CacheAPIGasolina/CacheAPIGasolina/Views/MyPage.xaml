@@ -5,7 +5,7 @@
              x:Class="CacheAPIGasolina.Views.MyPage">
     <ContentPage.Content>
         <StackLayout Background="#FFEAF6">
-            <Label Text="{Binding Count}"/>
+            <Label Text="{Binding FuelCollection.Count}"/>
             <StackLayout Margin="20,40,20,0"   
                                 BindableLayout.ItemsSource="{Binding FuelCollection }" 
                                 VerticalOptions="FillAndExpand">
@@ -13,10 +13,10 @@
                     <DataTemplate>
                         <Grid RowDefinitions="*,*,*,*" ColumnDefinitions="Auto,*" Padding="15">
                             <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Source="Fuel" Margin="0,0,20,0"/>
-                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding COMBUSTIBLE}"  TextColor="Black" FontAttributes="Bold" FontSize="16" />
-                            <Label Grid.Row="1" Grid.Column="1" Text="{Binding SEMANA_LABEL}"  TextColor="Black" FontAttributes="Bold" FontSize="16" />
-                            <Label Grid.Row="2" Grid.Column="1" Text="{Binding PRECIO}" FontSize="15"/>
-                            <Label Grid.Row="3" Grid.Column="1" Text="{Binding FECHA_SEMANA}" FontSize="15"/>
+                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding id}"  TextColor="Black" FontAttributes="Bold" FontSize="16" />
+                            <Label Grid.Row="1" Grid.Column="1" Text="{Binding price}"  TextColor="Black" FontAttributes="Bold" FontSize="16" />
+                            <Label Grid.Row="2" Grid.Column="1" Text="{Binding name}" FontSize="15"/>
+                            <Label Grid.Row="3" Grid.Column="1" Text="{Binding category}" FontSize="15"/>
                         </Grid>
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>

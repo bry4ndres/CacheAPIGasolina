@@ -37,8 +37,8 @@ namespace CacheAPIGasolina.ViewModels
             }
         }
 
-        private ObservableCollection<Fuel> _fuel;
-        public ObservableCollection<Fuel> FuelCollection {
+        private ObservableCollection<Character> _fuel;
+        public ObservableCollection<Character> FuelCollection {
             get => _fuel;
             set
             {
@@ -53,12 +53,12 @@ namespace CacheAPIGasolina.ViewModels
         
 
         public HttpResponseMessage response;
-        public string BaseURL = "http://www.apidashboard.somee.com";
+        public string BaseURL = "https://makeup-api.herokuapp.com";
 
         public MyPageViewModel(INavigationService navigationService) : base(navigationService)
         {
             Count = 100;
-            Barrel.ApplicationId = "MonkeyCacheSample";
+            Barrel.ApplicationId = "MonkeyCacheSample2";
             Task.Run(() => GetResponse());
         } 
 
@@ -66,8 +66,8 @@ namespace CacheAPIGasolina.ViewModels
         {
             if (Connectivity.NetworkAccess != NetworkAccess.Internet && !Barrel.Current.IsExpired(key: BaseURL))
             {
-                var fuels= Barrel.Current.Get<IEnumerable<Fuel>>(key: BaseURL);
-                FuelCollection = new ObservableCollection<Fuel>(fuels);
+                var fuels= Barrel.Current.Get<IEnumerable<Character>>(key: BaseURL);
+                FuelCollection = new ObservableCollection<Character>(fuels);
                 await PopupNavigation.Instance.PushAsync(new PopUpWarning());
             }
 
@@ -76,8 +76,8 @@ namespace CacheAPIGasolina.ViewModels
 
             if (response.IsSuccessStatusCode)
             {
-                var JD = JsonConvert.DeserializeObject<List<Fuel>>(await response.Content.ReadAsStringAsync());
-                    FuelCollection = new ObservableCollection<Fuel>(JD);
+                var JD = JsonConvert.DeserializeObject<List<Character>>(await response.Content.ReadAsStringAsync());
+                    FuelCollection = new ObservableCollection<Character>(JD);
                 
                 Barrel.Current.Add(key: BaseURL, data: FuelCollection, expireIn: TimeSpan.FromDays(2));
             }

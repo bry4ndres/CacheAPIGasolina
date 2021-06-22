@@ -9,7 +9,7 @@ namespace CacheAPIGasolina.Services
 {
     public interface IFuelsApi
     {
-        [Get("/api/fuels")]
+        [Get("/api/v1/products.json?product_tags=Vegan&product_type=blush")]
         Task<HttpResponseMessage> GetFuels();
     }
 }
